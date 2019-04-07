@@ -1,0 +1,6 @@
+[kusanagi]
+name=KUSANAGI RPM packages
+baseurl=https://repo.prime-strategy.co.jp/rpm/noarch/
+enabled=1
+gpgcheck=0
+

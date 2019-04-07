@@ -1,0 +1,45 @@
+#!/usr/bin/expect
+set timeout 5
+spawn env LANG=C mysql_secure_installation
+expect {
+    "Enter current password for root (enter for none):" {
+        send "\n"
+        exp_continue
+    }
+    "(using password: NO)" {
+        expect "Enter current password for root (enter for none):"
+        send "kusanagi\n"
+        exp_continue
+    }
+    "Set root password? \\\[Y/n\\\]" {
+        send "Y\n"
+        exp_continue
+    }
+    "Change the root password? \\\[Y/n\\\]" {
+        send "n\n"
+        exp_continue
+    }
+    "New password:" {
+        send "kusanagi\n"
+        exp_continue
+    }
+    "Re-enter new password:" {
+        send "kusanagi\n"
+        exp_continue
+    }
+    "Remove anonymous users? \\\[Y/n\\\]" {
+        send "Y\n"
+        exp_continue
+    }
+    "Disallow root login remotely? \\\[Y/n\\\]" {
+        send "Y\n"
+        exp_continue
+    }
+    "Remove test database and access to it? \\\[Y/n\\\]" {
+        send "Y\n"
+        exp_continue
+    }
+    "Reload privilege tables now? \\\[Y/n\\\]" {
+        send "Y\n"
+    }
+}
